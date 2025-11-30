@@ -1,5 +1,5 @@
+import { Either, right } from "@/application/either"
 import CPF from "../../../../domain/vo/cpf"
-import { Either, right } from "../../../either"
 export default class AddCustomer {
 
   constructor(
