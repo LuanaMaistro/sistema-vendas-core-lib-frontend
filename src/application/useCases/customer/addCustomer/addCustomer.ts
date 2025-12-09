@@ -1,18 +1,21 @@
 import CPF from "../../../../domain/vo/cpf"
-import { Either, right } from "../../../either"
+import { right } from "../../../either"
+import CustomerService from "../../../interfaces/services/customerService"
+import { OperationResult } from "../../base/OperationResult"
 export default class AddCustomer {
 
   constructor(
+    private readonly customerServices: CustomerService
   ){}
 
-  async addCpf(name: string, cpf: string): Promise<Either<Error, undefined>> {
+  async addCpf(name: string, cpf: string): Promise<OperationResult> {
 
     const newCustomer = {
       Cpf: CPF.create(cpf),
       name: name
     }
 
-    console.log(newCustomer)
+    this.customerServices.Add(newCustomer)
 
     return right(undefined)
   }
