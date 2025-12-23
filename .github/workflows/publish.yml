@@ -8,6 +8,13 @@ permissions:
   contents: read
   packages: write
 
+workflow_dispatch:  # ← Adicione esta linha
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.0)'
+        required: true
+        type: string
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
