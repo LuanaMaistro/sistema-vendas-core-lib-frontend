@@ -32,6 +32,16 @@
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
+
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "@Dibimo:registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dibimo/sistema-vendas-core-lib-frontend"
+  },
+
   "keywords": [
     "domain",
     "application",
