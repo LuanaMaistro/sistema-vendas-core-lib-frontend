@@ -1,5 +1,5 @@
 {
-  "name": "@sistemas-vendas/core-lib",
+  "name": "@dibimo/core-lib",
   "version": "0.1.0",
   "description": "Core business logic library",
   "main": "./dist/index.js",
