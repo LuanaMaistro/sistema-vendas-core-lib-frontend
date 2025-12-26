@@ -9,7 +9,7 @@ import { OperationResult } from "../../base/OperationResult"
 import AddCnpjCustomerDto from "./addCnpjCustomerDto"
 import AddCpfCustomerDto from "./addCpfCustomerDto"
 
-export default class AddCustomer extends UseCase{
+export default class AddCustomerUseCase extends UseCase{
 
   static inject: Array<ListServices> = ['CustomerSerivce'] as const
 
