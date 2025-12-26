@@ -10,6 +10,7 @@ export default interface Customer extends Entity {
 }
 
 export interface CustomerContact {
-
+  email: string,
+  phone: string,
 }
 
