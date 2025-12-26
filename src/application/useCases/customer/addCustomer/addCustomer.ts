@@ -1,6 +1,7 @@
 import Customer from "../../../../domain/entities/customer"
 import CNPJ from "../../../../domain/vo/cnpj"
 import CPF from "../../../../domain/vo/cpf"
+import { left, right } from "../../../either"
 import { ListServices, PickServices } from "../../../interfaces/services"
 import CustomerService from "../../../interfaces/services/customerService"
 import UseCase from "../../base/abstractUseCase"
@@ -18,6 +19,10 @@ export default class AddCustomer extends UseCase{
     super()
     this.customerServices = services.CustomerSerivce
 
+  }
+
+  async execute(): Promise<OperationResult> {
+    return right(undefined)
   }
 
   async addCpf(aCpfCustomer: AddCpfCustomerDto): Promise<OperationResult> {
