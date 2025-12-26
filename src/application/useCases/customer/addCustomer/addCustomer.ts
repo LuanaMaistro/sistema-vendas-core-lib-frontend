@@ -1,8 +1,10 @@
+import Customer from "../../../../domain/entities/customer"
 import CPF from "../../../../domain/vo/cpf"
 import { ListServices, PickServices } from "../../../interfaces/services"
 import CustomerService from "../../../interfaces/services/customerService"
 import UseCase from "../../base/abstractUseCase"
 import { OperationResult } from "../../base/OperationResult"
+import AddCpfCustomerDto from "./addCpfCustomerDto"
 
 export default class AddCustomer extends UseCase{
 
@@ -16,12 +18,16 @@ export default class AddCustomer extends UseCase{
 
   }
 
-  async addCpf(name: string, cpf: string): Promise<OperationResult> {
+  async addCpf(aCpfCustomer: AddCpfCustomerDto): Promise<OperationResult> {
 
     const newCustomer = {
-      Cpf: CPF.create(cpf),
-      name: name
-    }
+      Cpf: CPF.create(aCpfCustomer.cpf),
+      name: aCpfCustomer.name,
+      CustomerContact: {
+        email: aCpfCustomer.email,
+        phone: aCpfCustomer.phone,
+      }
+    } as Customer
 
     return this.toOperationResult(this.customerServices.Add(newCustomer))
   }
