@@ -1,20 +1,25 @@
+import { left } from "../../../either/either";
 import { ListServices, PickServices } from "../../../interfaces/services";
-import ProductService from "../../../interfaces/services/productService";
+import CustomerService from "../../../interfaces/services/customerService";
 import UseCase from "../../base/abstractUseCase";
+import { OperationResult } from "../../base/OperationResult";
+import RemoveCustomerCommand from "./RemoveCustomerCommand";
 
-export default class RemoveCustomer extends UseCase {
+export default class RemoveCustomerUseCase extends UseCase {
 
-  static inject: Array<ListServices> = ['ProductService'] as const
-  private productServices: ProductService
+  static inject: Array<ListServices> = ['CustomerSerivce'] as const
 
-  constructor(services: PickServices<'ProductService'>) {
+  private readonly customerServices: CustomerService
+
+  constructor(services: PickServices<'CustomerSerivce'>) {
     super()
-    this.productServices = services.ProductService
+    this.customerServices = services.CustomerSerivce
   }
 
-  async execute(customerId: string) {
-    this.productServices
-    console.log('removendo cliente: ',customerId)
+  async execute(command: RemoveCustomerCommand): Promise<OperationResult> {
+    if(!command.id) return left(new Error("ID é obrigatório"))
+
+    return this.toOperationResult(this.customerServices.Remove(command.id))
   }
 }
 
