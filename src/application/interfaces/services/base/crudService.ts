@@ -6,3 +6,4 @@ export default interface CrudService<T> {
   Update(entity: T): Result
   List(): Result<Array<T>>
 }
+
