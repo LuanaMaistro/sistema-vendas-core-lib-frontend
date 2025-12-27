@@ -5,5 +5,6 @@ export default interface CrudService<T> {
   Remove(id: string): Result
   Update(entity: T): Result
   List(): Result<Array<T>>
+  GetById(id: string): Result<T>
 }
 
