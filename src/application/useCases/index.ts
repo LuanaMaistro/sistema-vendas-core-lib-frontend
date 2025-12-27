@@ -1,2 +1,5 @@
 export { default as AddCustomer } from './customer/addCustomer/addCustomer'
 export { default as RemoveCustomer } from './customer/removeCustomer/removeCustomer'
+export { default as ListCustomers } from './customer/listCustomers/listCustomers'
+export { default as GetCustomerById } from './customer/getCustomerById/getCustomerById'
+export { default as UpdateCustomer } from './customer/updateCustomer/updateCustomer'
