@@ -8,16 +8,16 @@ import { OperationResult } from "./OperationResult";
 export default abstract class UseCase {
   static inject: Array<ListServices>
 
-  protected toOperationResult(aResult: Result): OperationResult{
+  protected toOperationResult<T = undefined>(aResult: Result<T>): OperationResult<T>{
     if(!aResult.success) return this.leftWay(aResult)
     return this.rightWay(aResult)
   }
 
-  private rightWay(aResult: Result) {
-    return right(aResult.data)
+  private rightWay<T = undefined>(aResult: Result<T>) {
+    return right(aResult.data!)
   }
 
-  private leftWay(aResult: Result) {
+  private leftWay<T = undefined>(aResult: Result<T>) {
     if(aResult.code === 400) return left(new ClienteError())
     if(aResult.code === 500) return left(new ServerError())
 
