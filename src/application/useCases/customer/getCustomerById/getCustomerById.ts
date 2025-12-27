@@ -1,11 +1,12 @@
+import Customer from "../../../../domain/entities/customer";
 import { left } from "../../../either/either";
 import { ListServices, PickServices } from "../../../interfaces/services";
 import CustomerService from "../../../interfaces/services/customerService";
 import UseCase from "../../base/abstractUseCase";
 import { OperationResult } from "../../base/OperationResult";
-import RemoveCustomerCommand from "./RemoveCustomerCommand";
+import GetCustomerByIdCommand from "./GetCustomerByIdCommand";
 
-export default class RemoveCustomerUseCase extends UseCase {
+export default class GetCustomerByIdUseCase extends UseCase {
 
   static inject: Array<ListServices> = ['CustomerSerivce'] as const
 
@@ -16,10 +17,9 @@ export default class RemoveCustomerUseCase extends UseCase {
     this.customerServices = services.CustomerSerivce
   }
 
-  async execute(command: RemoveCustomerCommand): Promise<OperationResult> {
+  async execute(command: GetCustomerByIdCommand): Promise<OperationResult<Customer>> {
     if(!command.id) return left(new Error("ID é obrigatório"))
 
-    return this.toOperationResult(this.customerServices.Remove(command.id))
+    return this.toOperationResult<Customer>(this.customerServices.GetById(command.id))
   }
 }
-
