@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Necessário para verificar tags existentes
+          token: ${{ secrets.TESTE }}  # IMPORTANTE: Usar PAT ao invés de GITHUB_TOKEN
 
       - name: Get version from package.json
         id: package-version
