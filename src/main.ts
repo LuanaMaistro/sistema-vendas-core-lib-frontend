@@ -30,7 +30,7 @@ function createProxyUseCase<T extends object>(target: T): T {
   });
 }
 
-export function createApplicationInstance(factoriesServices: ServicesFactories): UseCaseInstances {
+export default function createApplicationInstance(factoriesServices: ServicesFactories): UseCaseInstances {
   const result: Record<string, UseCase> = {}
 
   for (const [name, aUseCaseClass] of Object.entries(Application.UsesCases)) {
