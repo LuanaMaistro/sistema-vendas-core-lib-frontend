@@ -10,13 +10,13 @@ import AddCustomerCommand from "./AddCustomerDto"
 
 export default class AddCustomerUseCase extends UseCase{
 
-  static inject: Array<ListServices> = ['CustomerSerivce'] as const
+  static inject: Array<ListServices> = ['CustomerService'] as const
 
   private readonly customerServices: CustomerService
 
-  constructor(services: PickServices<'CustomerSerivce'>){
+  constructor(services: PickServices<'CustomerService'>){
     super()
-    this.customerServices = services.CustomerSerivce
+    this.customerServices = services.CustomerService
 
   }
 
