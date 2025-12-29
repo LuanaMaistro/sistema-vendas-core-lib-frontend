@@ -1,0 +1,139 @@
+name: Release and Publish Package
+
+on:
+  workflow_dispatch:  # Permite execução manual
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+
+jobs:
+  # ==========================================
+  # JOB 1: Verificar versão e criar tag
+  # ==========================================
+  check-and-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    outputs:
+      tag-created: ${{ steps.create-tag.outputs.created }}
+      version: ${{ steps.package-version.outputs.version }}
+      tag: ${{ steps.package-version.outputs.tag }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.TESTE }}
+
+      - name: Extract version from package.json
+        id: package-version
+        run: |
+          VERSION=$(grep -oP '(?<="version": ")[^"]*' package.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=v$VERSION" >> $GITHUB_OUTPUT
+          echo "📦 Version extracted: $VERSION"
+
+      - name: Check if tag exists
+        id: check-tag
+        run: |
+          if git rev-parse "v${{ steps.package-version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "⚠️ Tag v${{ steps.package-version.outputs.version }} already exists. Skipping..."
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "✅ Tag v${{ steps.package-version.outputs.version }} does not exist. Creating..."
+          fi
+
+      - name: Create and push tag
+        id: create-tag
+        if: steps.check-tag.outputs.exists == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "${{ steps.package-version.outputs.tag }}" -m "Release ${{ steps.package-version.outputs.tag }}"
+          git push origin "${{ steps.package-version.outputs.tag }}"
+          echo "created=true" >> $GITHUB_OUTPUT
+          echo "🏷️ Tag ${{ steps.package-version.outputs.tag }} created and pushed"
+
+      - name: Skip workflow if tag exists
+        if: steps.check-tag.outputs.exists == 'true'
+        run: |
+          echo "created=false" >> $GITHUB_OUTPUT
+          echo "⏭️ Workflow stopped: version already published"
+
+  # ==========================================
+  # JOB 2: Criar release
+  # ==========================================
+  create-release:
+    needs: check-and-tag
+    if: needs.check-and-tag.outputs.tag-created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.TESTE }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ needs.check-and-tag.outputs.tag }}
+          name: Release ${{ needs.check-and-tag.outputs.version }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.TESTE }}
+
+      - name: Release created
+        run: echo "📝 Release ${{ needs.check-and-tag.outputs.tag }} created successfully"
+
+  # ==========================================
+  # JOB 3: Build e publicar package
+  # ==========================================
+  build-and-publish:
+    needs: [check-and-tag, create-release]
+    if: needs.check-and-tag.outputs.tag-created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@Dibimo'
+
+      - name: Install dependencies
+        run: |
+          echo "📦 Installing dependencies..."
+          npm install
+
+      - name: Build package
+        run: |
+          echo "🔨 Building package..."
+          npm run build
+
+      - name: Publish to GitHub Packages
+        run: |
+          echo "🚀 Publishing package v${{ needs.check-and-tag.outputs.version }} to GitHub Packages..."
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Published successfully
+        run: echo "✅ Package v${{ needs.check-and-tag.outputs.version }} published to GitHub Packages"
