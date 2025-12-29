@@ -6,13 +6,13 @@ import { OperationResult } from "../../base/OperationResult";
 
 export default class ListCustomersUseCase extends UseCase {
 
-  static inject: Array<ListServices> = ['CustomerSerivce'] as const
+  static inject: Array<ListServices> = ['CustomerService'] as const
 
   private readonly customerServices: CustomerService
 
-  constructor(services: PickServices<'CustomerSerivce'>) {
+  constructor(services: PickServices<'CustomerService'>) {
     super()
-    this.customerServices = services.CustomerSerivce
+    this.customerServices = services.CustomerService
   }
 
   async execute(): Promise<OperationResult<Array<Customer>>> {
