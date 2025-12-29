@@ -23,3 +23,5 @@ export type ServicesFactories = {
   [K in keyof ServicesType]: () => ServicesType[K]
 }
 
+export * as Base from './base'
+
