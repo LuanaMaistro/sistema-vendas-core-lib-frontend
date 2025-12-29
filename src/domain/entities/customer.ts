@@ -2,7 +2,7 @@ import CNPJ from "../vo/cnpj";
 import CPF from "../vo/cpf";
 import Entity from "./entity";
 
-export default interface Customer extends Entity {
+export interface Customer extends Entity {
   name: string
   Cnpj?: CNPJ
   Cpf?: CPF
