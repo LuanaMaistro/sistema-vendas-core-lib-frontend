@@ -5,6 +5,10 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -20,12 +24,9 @@
       "import": "./dist/application/index.mjs",
       "require": "./dist/application/index.js",
       "types": "./dist/application/index.d.ts"
-    }
+    },
+    "./package.json": "./package.json"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
