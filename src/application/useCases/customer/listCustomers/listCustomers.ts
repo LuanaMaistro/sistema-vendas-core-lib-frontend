@@ -1,4 +1,4 @@
-import Customer from "../../../../domain/entities/customer";
+import { Customer } from "../../../../domain/entities/customer";
 import { ListServices, PickServices } from "../../../interfaces/services";
 import CustomerService from "../../../interfaces/services/customerService";
 import UseCase from "../../base/abstractUseCase";

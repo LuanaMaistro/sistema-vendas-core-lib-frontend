@@ -1,4 +1,4 @@
-import Customer from "../../../../domain/entities/customer";
+import {Customer} from "../../../../domain/entities/customer";
 import CNPJ from "../../../../domain/vo/cnpj";
 import CPF from "../../../../domain/vo/cpf";
 import { left } from "../../../either/either";
