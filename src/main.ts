@@ -1,8 +1,14 @@
 import * as Application from "./application";
 import { left } from "./application/either";
-import { ServicesFactories } from "./application/interfaces/services";
+import { ServicesFactories, ListServices } from "./application/interfaces/services";
 import { UseCaseInstances } from "./application/types";
 import UseCase from "./application/useCases/base/abstractUseCase";
+
+function isUseCaseClass(value: unknown): value is typeof UseCase {
+  return typeof value === 'function' &&
+         'prototype' in value &&
+         value.prototype instanceof UseCase
+}
 
 function createProxyUseCase<T extends object>(target: T): T {
   return new Proxy(target, {
@@ -33,11 +39,13 @@ function createProxyUseCase<T extends object>(target: T): T {
 export default function createApplicationInstance(factoriesServices: ServicesFactories): UseCaseInstances {
   const result: Record<string, UseCase> = {}
 
-  for (const [name, aUseCaseClass] of Object.entries(Application.UsesCases)) {
+  for (const [name, aUseCaseClass] of Object.entries(Application.UseCases)) {
+
+    if (!isUseCaseClass(aUseCaseClass)) continue
 
     const servicesToInject = aUseCaseClass.inject || []
 
-    const resolvedServices = servicesToInject.reduce((acc: any, currentService) => {
+    const resolvedServices = servicesToInject.reduce((acc: any, currentService: ListServices) => {
       const factory = factoriesServices[currentService]
       if (!factory) throw new Error(`No factory registered for ${currentService}`)
       acc[currentService] = factory()
