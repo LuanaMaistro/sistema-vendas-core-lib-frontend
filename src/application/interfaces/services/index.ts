@@ -5,7 +5,7 @@ export type { default as CustomerService } from './customerService'
 export type { default as ProductService } from './productService'
 
 export const Services = {
-  CustomerSerivce: null as unknown as CustomerService,
+  CustomerService: null as unknown as CustomerService,
   ProductService: null as unknown as ProductService
 }
 
