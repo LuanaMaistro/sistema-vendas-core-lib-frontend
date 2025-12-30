@@ -21,9 +21,10 @@ export const isRight = <L, R>(either: Either<L, R>): either is { tag: 'right'; v
 };
 
 export const fold = <L, R, T>(
+  either: Either<L, R>,
   onLeft: (left: L) => T,
   onRight: (right: R) => T
-) => (either: Either<L, R>): T => {
+) : T => {
   return isLeft(either)
     ? onLeft(either.value)
     : onRight(either.value);
