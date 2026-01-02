@@ -7,6 +7,7 @@ export type { default as Entity } from './domain/entities/entity'
 
 export { default as CPF } from './domain/vo/cpf'
 export { default as CNPJ } from './domain/vo/cnpj'
+export { default as Name } from './domain/vo/name'
 
 export { default as ValueObjectError } from './domain/errors/valueObjectError'
 
