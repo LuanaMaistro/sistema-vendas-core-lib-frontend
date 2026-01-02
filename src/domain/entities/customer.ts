@@ -14,3 +14,7 @@ export interface CustomerContact {
   phone?: string,
 }
 
+export enum CustomerType {
+  NATURAL_PERSON = 'NATURAL_PERSON',
+  LEGAL_PERSON = 'LEGAL_PERSON'
+}

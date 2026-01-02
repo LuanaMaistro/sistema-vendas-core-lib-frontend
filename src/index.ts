@@ -1,6 +1,6 @@
 export { default as createApplicationInstance } from './main'
 
-export type { Customer, CustomerContact } from './domain/entities/customer'
+export type { Customer, CustomerContact, CustomerType } from './domain/entities/customer'
 export type { default as Product } from './domain/entities/product'
 export type { default as Entity } from './domain/entities/entity'
 
