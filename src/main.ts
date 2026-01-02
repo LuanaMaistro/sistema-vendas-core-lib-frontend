@@ -15,6 +15,7 @@ function createProxyUseCase<T extends object>(target: T): T {
     get(target, prop, receiver) {
       const original = Reflect.get(target, prop, receiver);
 
+      if (prop !== 'execute') return original;
       if (typeof original !== 'function') return original;
 
       return function (this: any, ...args: any[]) {
