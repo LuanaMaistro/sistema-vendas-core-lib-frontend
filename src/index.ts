@@ -39,6 +39,7 @@ export {
 } from './application/either/either'
 
 export * as UseCasesBase from './application/useCases/base'
-import { OperationError } from './application/useCases/base'
+import { OperationError, OperationResult } from './application/useCases/base'
 export {OperationError}
+export { type OperationResult }
 
