@@ -39,4 +39,6 @@ export {
 } from './application/either/either'
 
 export * as UseCasesBase from './application/useCases/base'
+import { OperationError } from './application/useCases/base'
+export {OperationError}
 
