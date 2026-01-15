@@ -1,6 +1,7 @@
-export default interface Product {
-  name: string,
-  description: string,
-  code: string,
+import Entity from "./entity";
+export default interface Product extends Entity {
+  name: string;
+  description: string;
+  code: string;
 }
 
