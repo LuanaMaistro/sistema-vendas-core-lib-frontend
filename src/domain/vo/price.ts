@@ -18,6 +18,7 @@ export default class Price {
   }
 
   private static isValid(price: number): boolean {
+    if (price === null) return false;
     if (isNaN(price)) return false;
     if (price < 0) return false;
     if (!isFinite(price)) return false;
