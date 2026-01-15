@@ -18,6 +18,7 @@ export default class Quantity {
   }
 
   private static isValid(quantity: number): boolean {
+    if (quantity === null) return false;
     if (isNaN(quantity)) return false;
     if (quantity < 0) return false;
     if (!Number.isInteger(quantity)) return false;
