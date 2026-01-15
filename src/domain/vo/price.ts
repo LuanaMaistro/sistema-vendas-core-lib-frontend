@@ -17,11 +17,13 @@ export default class Price {
     return new Price(numericPrice);
   }
 
-  private static isValid(price: number): boolean {
-    if (price === null) return false;
-    if (isNaN(price)) return false;
-    if (price < 0) return false;
-    if (!isFinite(price)) return false;
+  public static isValid(price: number | string): boolean {
+    const numericPrice = typeof price === 'string' ? parseFloat(price) : price;
+
+    if (numericPrice === null) return false;
+    if (isNaN(numericPrice)) return false;
+    if (numericPrice < 0) return false;
+    if (!isFinite(numericPrice)) return false;
     return true;
   }
 }
