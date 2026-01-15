@@ -17,11 +17,14 @@ export default class Quantity {
     return new Quantity(numericQuantity);
   }
 
-  private static isValid(quantity: number): boolean {
-    if (quantity === null) return false;
-    if (isNaN(quantity)) return false;
-    if (quantity < 0) return false;
-    if (!Number.isInteger(quantity)) return false;
+  public static isValid(quantity: number | string): boolean {
+    const numericQuantity = typeof quantity === 'string' ? parseInt(quantity, 10) : quantity;
+
+    if (numericQuantity === null) return false;
+    if (isNaN(numericQuantity)) return false;
+    if (numericQuantity < 0) return false;
+    if (!Number.isInteger(numericQuantity)) return false;
+
     return true;
   }
 }
