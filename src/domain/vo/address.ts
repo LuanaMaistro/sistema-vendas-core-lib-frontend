@@ -2,7 +2,7 @@ export default class Address {
   private constructor(
     public readonly street: string,
     public readonly number: string,
-    public readonly complement: string,
+    public readonly complement: string | undefined,
     public readonly neighborhood: string,
     public readonly city: string,
     public readonly state: string,
@@ -21,7 +21,7 @@ export default class Address {
   static create(
     street: string,
     number: string,
-    complement: string,
+    complement: string | undefined,
     neighborhood: string,
     city: string,
     state: string,
