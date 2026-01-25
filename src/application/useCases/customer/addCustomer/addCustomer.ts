@@ -1,6 +1,10 @@
 import {Customer} from "../../../../domain/entities/customer"
+import Address from "../../../../domain/vo/address"
 import CNPJ from "../../../../domain/vo/cnpj"
 import CPF from "../../../../domain/vo/cpf"
+import Email from "../../../../domain/vo/email"
+import Mobile from "../../../../domain/vo/mobile"
+import Phone from "../../../../domain/vo/phone"
 import { left } from "../../../either"
 import { ListServices, PickServices } from "../../../interfaces/services"
 import CustomerService from "../../../interfaces/services/customerService"
@@ -30,17 +34,27 @@ export default class AddCustomerUseCase extends UseCase{
   private toCustomer(command: AddCustomerCommand): Customer {
     const result = {
       name: command.name,
-      CustomerContact: {
-        email: command.email,
-        phone: command.phone,
-      }
     } as Customer
 
+    if(command.email) result.email = Email.create(command.email)
+    if(command.phone) result.phone = Phone.create(command.phone)
+    if(command.mobile) result.mobile = Mobile.create(command.mobile)
+    if(command.address) result.address = this.convertToAddress(command.address)
 
     if(command.cpf) result.Cpf = CPF.create(command.cpf)
-      else result.Cnpj = CNPJ.create(command.cnpj!)
+    else result.Cnpj = CNPJ.create(command.cnpj!)
 
     return result
+  }
+
+  private convertToAddress(address: AddCustomerCommand["address"]) {
+    return Address.create(address!.street,
+      address!.number,
+      address?.complement,
+      address!.neighborhood,
+      address!.city,
+      address!.state,
+      address!.zipCode)
   }
 
 }
