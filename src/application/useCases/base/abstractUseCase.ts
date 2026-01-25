@@ -8,9 +8,10 @@ import { OperationResult } from "./OperationResult";
 export default abstract class UseCase {
   static inject: Array<ListServices>
 
-  protected toOperationResult<T = undefined>(aResult: Result<T>): OperationResult<T>{
-    if(!aResult.success) return this.leftWay(aResult)
-    return this.rightWay(aResult)
+  protected async toOperationResult<T = undefined>(aResult: Result<T> | Promise<Result<T>>): Promise<OperationResult<T>> {
+    const result = aResult instanceof Promise ? await aResult : aResult
+    if(!result.success) return this.leftWay(result)
+    return this.rightWay(result)
   }
 
   private rightWay<T = undefined>(aResult: Result<T>) {

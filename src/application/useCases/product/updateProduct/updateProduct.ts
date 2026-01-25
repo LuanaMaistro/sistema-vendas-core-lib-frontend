@@ -22,7 +22,7 @@ export default class UpdateProductUseCase extends UseCase {
     if (!command.id) return left(new Error("ID é obrigatório"));
 
     const product = this.buildProductUpdate(command);
-    return this.toOperationResult(this.productService.Update(product));
+    return await this.toOperationResult(await this.productService.Update(product));
   }
 
   private buildProductUpdate(command: UpdateProductCommand): Product {

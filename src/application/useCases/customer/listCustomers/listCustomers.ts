@@ -17,6 +17,6 @@ export default class ListCustomersUseCase extends UseCase {
 
   async execute(): Promise<OperationResult<Array<Customer>>> {
     const serviceResult = await this.customerServices.List()
-    return this.toOperationResult(serviceResult)
+    return await this.toOperationResult(serviceResult)
   }
 }

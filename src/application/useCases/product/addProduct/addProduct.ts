@@ -24,7 +24,7 @@ export default class AddProductUseCase extends UseCase {
     if (!command.code) return left(new Error("Código é obrigatório"));
 
     const product = this.createProduct(command);
-    return this.toOperationResult(this.productService.Add(product));
+    return await this.toOperationResult(await this.productService.Add(product));
 
   }
 
