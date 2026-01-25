@@ -1,17 +1,24 @@
+import Address from "../vo/address";
 import CNPJ from "../vo/cnpj";
 import CPF from "../vo/cpf";
+import Email from "../vo/email";
+import Mobile from "../vo/mobile";
+import Phone from "../vo/phone";
 import Entity from "./entity";
 
 export interface Customer extends Entity {
   name: string
   Cnpj?: CNPJ
   Cpf?: CPF
-  CustomerContact?: CustomerContact
-}
+  email?: Email
+  mobile?: Mobile
+  phone?: Phone
+  address?: Address
 
-export interface CustomerContact {
-  email?: string,
-  phone?: string,
+  alternativeEmails?: Email[]
+  alternativeMobiles?: Mobile[]
+  alternativePhones?: Phone[]
+  alternativeAddresses?: Address[]
 }
 
 export enum CustomerType {
