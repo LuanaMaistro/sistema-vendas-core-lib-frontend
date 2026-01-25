@@ -28,7 +28,7 @@ export default class AddCustomerUseCase extends UseCase{
     if(!command.cpf && !command.cnpj) left(new Error("É necessário pelo menos um documento"))
 
     const customer = this.toCustomer(command)
-    return this.toOperationResult(this.customerServices.Add(customer))
+    return await this.toOperationResult(await this.customerServices.Add(customer))
   }
 
   private toCustomer(command: AddCustomerCommand): Customer {

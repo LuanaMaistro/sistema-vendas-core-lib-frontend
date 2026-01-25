@@ -19,6 +19,6 @@ export default class GetProductByIdUseCase extends UseCase {
   async execute(command: GetProductByIdCommand): Promise<OperationResult<Product>> {
     if (!command.id) return left(new Error("ID é obrigatório"));
 
-    return this.toOperationResult<Product>(this.productService.GetById(command.id));
+    return await this.toOperationResult<Product>(await this.productService.GetById(command.id));
   }
 }

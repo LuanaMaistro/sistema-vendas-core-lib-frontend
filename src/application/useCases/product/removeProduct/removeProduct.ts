@@ -18,6 +18,6 @@ export default class RemoveProductUseCase extends UseCase {
   async execute(command: RemoveProductCommand): Promise<OperationResult> {
     if (!command.id) return left(new Error("ID é obrigatório"));
 
-    return this.toOperationResult(this.productService.Remove(command.id));
+    return await this.toOperationResult(await this.productService.Remove(command.id));
   }
 }

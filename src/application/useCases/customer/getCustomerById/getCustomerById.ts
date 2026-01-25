@@ -20,6 +20,6 @@ export default class GetCustomerByIdUseCase extends UseCase {
   async execute(command: GetCustomerByIdCommand): Promise<OperationResult<Customer>> {
     if(!command.id) return left(new Error("ID é obrigatório"))
 
-    return this.toOperationResult<Customer>(this.customerServices.GetById(command.id))
+    return await this.toOperationResult<Customer>(await this.customerServices.GetById(command.id))
   }
 }

@@ -19,7 +19,7 @@ export default class RemoveCustomerUseCase extends UseCase {
   async execute(command: RemoveCustomerCommand): Promise<OperationResult> {
     if(!command.id) return left(new Error("ID é obrigatório"))
 
-    return this.toOperationResult(this.customerServices.Remove(command.id))
+    return await this.toOperationResult(await this.customerServices.Remove(command.id))
   }
 }
 
