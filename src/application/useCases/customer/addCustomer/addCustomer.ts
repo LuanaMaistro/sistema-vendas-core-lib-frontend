@@ -23,11 +23,11 @@ export default class AddCustomerUseCase extends UseCase{
   async execute(command: AddCustomerCommand): Promise<OperationResult> {
     if(!command.cpf && !command.cnpj) left(new Error("É necessário pelo menos um documento"))
 
-    const customer = this.createCustomer(command)
+    const customer = this.toCustomer(command)
     return this.toOperationResult(this.customerServices.Add(customer))
   }
 
-  private createCustomer(command: AddCustomerCommand): Customer {
+  private toCustomer(command: AddCustomerCommand): Customer {
     const result = {
       name: command.name,
       CustomerContact: {
