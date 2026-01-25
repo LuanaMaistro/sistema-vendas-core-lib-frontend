@@ -4,5 +4,14 @@ export default interface AddCustomerCommand {
   cnpj?: string,
   email?: string,
   phone?: string,
-
+  mobile?: string,
+  address?: {
+    street: string,
+    number: string,
+    complement?: string,
+    neighborhood: string,
+    city: string,
+    state: string,
+    zipCode: string,
+  }
 }
