@@ -13,6 +13,10 @@ export { default as CNPJ } from './domain/vo/cnpj'
 export { default as Name } from './domain/vo/name'
 export { default as Quantity } from './domain/vo/quantity'
 export { default as Price } from './domain/vo/price'
+export { default as Email } from './domain/vo/email'
+export { default as Mobile } from './domain/vo/mobile'
+export { default as Phone } from './domain/vo/phone'
+export { default as Address } from './domain/vo/address'
 
 export { default as ValueObjectError } from './domain/errors/valueObjectError'
 
