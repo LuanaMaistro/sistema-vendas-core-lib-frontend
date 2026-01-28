@@ -3,6 +3,7 @@ export { default as RemoveCustomer } from './customer/removeCustomer/removeCusto
 export { default as ListCustomers } from './customer/listCustomers/listCustomers'
 export { default as GetCustomerById } from './customer/getCustomerById/getCustomerById'
 export { default as UpdateCustomer } from './customer/updateCustomer/updateCustomer'
+export { default as toggleActiveStatus } from './customer/toggleActiveStatus/toggleActiveStatus'
 
 export { default as AddProduct } from './product/addProduct/addProduct'
 export { default as RemoveProduct } from './product/removeProduct/removeProduct'
