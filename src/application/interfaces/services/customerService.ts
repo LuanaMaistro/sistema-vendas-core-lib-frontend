@@ -5,6 +5,7 @@ import CrudService from "./base/crudService";
 
 export default interface CustomerService extends CrudService<Customer> {
   ListCustomers(filters: ListCustomerFilters): Promise<Result<Array<Customer>>>
+  ToogleActiveStatus(customer: Customer): Promise<Result>
 }
 
 export interface ListCustomerFilters {
