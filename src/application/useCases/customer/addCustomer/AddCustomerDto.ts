@@ -1,5 +1,5 @@
 export default interface AddCustomerCommand {
-  name?: string,
+  name: string,
   cpf?: string,
   cnpj?: string,
   email?: string,
