@@ -34,6 +34,7 @@ export default class AddCustomerUseCase extends UseCase{
   private toCustomer(command: AddCustomerCommand): Customer {
     const result = {
       name: command.name,
+      active: true
     } as Customer
 
     if(command.email) result.email = Email.create(command.email)
