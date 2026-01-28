@@ -8,6 +8,6 @@ export default interface CustomerService extends CrudService<Customer> {
 }
 
 export interface ListCustomerFilters {
-  onlyInactive?: boolean
+  onlyActives?: boolean
 }
 

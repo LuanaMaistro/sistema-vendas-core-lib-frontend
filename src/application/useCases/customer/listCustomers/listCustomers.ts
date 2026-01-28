@@ -21,7 +21,7 @@ export default class ListCustomersUseCase extends UseCase {
       return await this.toOperationResult(await this.customerServices.List())
 
     const serviceResult = await this.customerServices.ListCustomers({
-      onlyInactive: filters.onlyInactive
+      onlyActives: filters.onlyActives
     })
     return await this.toOperationResult(serviceResult)
   }

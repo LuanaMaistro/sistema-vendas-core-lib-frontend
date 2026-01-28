@@ -1,3 +1,3 @@
 export default interface ListCustomersCommand {
-  onlyInactive?: boolean
+  onlyActives?: boolean
 }
