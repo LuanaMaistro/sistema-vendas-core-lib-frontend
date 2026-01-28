@@ -54,6 +54,7 @@ export default function createApplicationInstance(factoriesServices: ServicesFac
     }, {})
 
     const instance = new (aUseCaseClass as any)(resolvedServices)
+    console.log('teste', instance)
     result[name] = createProxyUseCase(instance)
   }
 
