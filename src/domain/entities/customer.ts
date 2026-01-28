@@ -14,6 +14,7 @@ export interface Customer extends Entity {
   mobile?: Mobile
   phone?: Phone
   address?: Address
+  active?: boolean
 
   alternativeEmails?: Email[]
   alternativeMobiles?: Mobile[]
