@@ -34,6 +34,9 @@ export type {
   PickServices
 } from './application/interfaces/services'
 
+import { ListCustomerFilters } from './application/interfaces/services/customerService'
+export { type ListCustomerFilters }
+
 export type { Either } from './application/either/either'
 export {
   left,
