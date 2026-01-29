@@ -1,9 +1,10 @@
-import { CustomerType } from './domain'
+import { CustomerType, SaleItem, SaleStatus, Sale, PaymentMethod  } from './domain'
 
 export { default as createApplicationInstance } from './main'
 
 export type { Customer } from './domain/entities/customer'
-export { CustomerType }
+export type { SaleItem, Sale }
+export { CustomerType, SaleStatus, PaymentMethod }
 export type { default as Product } from './domain/entities/product'
 export type { default as Entity } from './domain/entities/entity'
 
