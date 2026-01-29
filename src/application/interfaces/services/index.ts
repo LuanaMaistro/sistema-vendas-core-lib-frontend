@@ -1,12 +1,14 @@
 import CustomerService from './customerService'
 import ProductService from './productService'
+import SaleService from './saleService'
 
 export type { default as CustomerService } from './customerService'
 export type { default as ProductService } from './productService'
 
 export const Services = {
   CustomerService: null as unknown as CustomerService,
-  ProductService: null as unknown as ProductService
+  ProductService: null as unknown as ProductService,
+  SaleService: null as unknown as SaleService
 }
 
 type ServicesType = typeof Services
