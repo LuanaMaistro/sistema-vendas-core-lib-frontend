@@ -2,21 +2,21 @@ import Entity from "./entity";
 
 export interface Sale extends Entity {
   customerId: string;
-  date: Date;
+  date?: Date;
   items: SaleItem[];
-  totalAmount: number;
+  totalAmount?: number;
   status: SaleStatus;
   paymentMethod: PaymentMethod;
   observations?: string;
 }
 
 export interface SaleItem extends Entity {
-  saleId: string;
-  productId: string;
-  productName: string;
+  saleId?: string;
+  productId?: string;
+  productName?: string;
   quantity: number;
-  unitPrice: number;
-  totalPrice: number;
+  unitPrice?: number;
+  totalPrice?: number;
 }
 
 export enum SaleStatus {
