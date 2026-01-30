@@ -25,6 +25,7 @@ export type { UseCaseInstances } from './application/types'
 
 export type { default as CustomerService } from './application/interfaces/services/customerService'
 export type { default as ProductService } from './application/interfaces/services/productService'
+export type { default as SaleService } from './application/interfaces/services/saleService'
 export type { default as CrudService } from './application/interfaces/services/base/crudService'
 export type { default as Result } from './application/interfaces/services/base/result'
 
