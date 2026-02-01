@@ -6,7 +6,7 @@ export default interface CreateSaleCommand {
     productId: string;
     quantity: number;
   }[];
-  paymentMethod: PaymentMethod
+  paymentMethod?: PaymentMethod
   observations?: string;
 }
 
