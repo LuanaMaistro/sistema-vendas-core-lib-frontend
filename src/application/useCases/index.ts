@@ -4,7 +4,15 @@ export { default as ListCustomers } from './customer/listCustomers/listCustomers
 export { default as GetCustomerById } from './customer/getCustomerById/getCustomerById'
 export { default as UpdateCustomer } from './customer/updateCustomer/updateCustomer'
 export { default as ToggleActiveStatus } from './customer/toggleActiveStatus/toggleActiveStatus'
+
 export { default as CreateSale } from './sale/createSale/CreateSaleUseCase'
+export { default as ListSales } from './sale/listSales/listSales'
+export { default as GetSaleById } from './sale/getSaleById/getSaleById'
+export { default as CancelSale } from './sale/cancelSale/cancelSale'
+export { default as ConfirmSale } from './sale/confirmSale/confirmSale'
+export { default as AddItemToSale } from './sale/addItemToSale/addItemToSale'
+export { default as RemoveItemFromSale } from './sale/removeItemFromSale/removeItemFromSale'
+export { default as UpdateItemQuantity } from './sale/updateItemQuantity/updateItemQuantity'
 
 export { default as AddProduct } from './product/addProduct/addProduct'
 export { default as RemoveProduct } from './product/removeProduct/removeProduct'
