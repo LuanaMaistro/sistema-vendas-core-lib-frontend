@@ -38,6 +38,9 @@ export type {
 import { ListCustomerFilters } from './application/interfaces/services/customerService'
 export { type ListCustomerFilters }
 
+import { ListSaleFilters } from './application/interfaces/services/saleService'
+export { type ListSaleFilters }
+
 export type { Either } from './application/either/either'
 export {
   left,
