@@ -4,6 +4,8 @@ import SaleService from './saleService'
 
 export type { default as CustomerService } from './customerService'
 export type { default as ProductService } from './productService'
+export type { default as SaleService } from './saleService'
+export type { ListSaleFilters } from './saleService'
 
 export const Services = {
   CustomerService: null as unknown as CustomerService,
