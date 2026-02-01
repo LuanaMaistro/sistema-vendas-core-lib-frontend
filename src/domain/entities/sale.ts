@@ -6,7 +6,7 @@ export interface Sale extends Entity {
   items: SaleItem[];
   totalAmount?: number;
   status: SaleStatus;
-  paymentMethod: PaymentMethod;
+  paymentMethod?: PaymentMethod;
   observations?: string;
 }
 
