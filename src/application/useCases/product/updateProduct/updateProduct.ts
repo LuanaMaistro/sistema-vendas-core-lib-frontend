@@ -34,8 +34,8 @@ export default class UpdateProductUseCase extends UseCase {
     if (Price.isValid(command.price!))
       result.price = Price.create(command.price!);
 
-    if (Quantity.isValid(command.quantity!))
-      result.quantity = Quantity.create(command.quantity!);
+    if (Quantity.isValid(command.minimumQuantity!))
+      result.minimumQuantity = Quantity.create(command.minimumQuantity!);
 
     return result;
   }
