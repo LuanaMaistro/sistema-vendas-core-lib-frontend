@@ -8,6 +8,7 @@ export default interface Product extends Entity {
   code: string;
   price: Price;
   quantity: Quantity;
+  minimumQuantity: Quantity;
   active: boolean;
 }
 
