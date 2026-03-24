@@ -7,6 +7,7 @@ export type { SaleItem, Sale }
 export { CustomerType, SaleStatus, PaymentMethod }
 export type { default as Product } from './domain/entities/product'
 export type { default as Entity } from './domain/entities/entity'
+export type { default as Recommendation } from './domain/entities/recommendation'
 
 
 export { default as CPF } from './domain/vo/cpf'
