@@ -4,6 +4,7 @@ export { default as ListCustomers } from './customer/listCustomers/listCustomers
 export { default as GetCustomerById } from './customer/getCustomerById/getCustomerById'
 export { default as UpdateCustomer } from './customer/updateCustomer/updateCustomer'
 export { default as ToggleActiveStatus } from './customer/toggleActiveStatus/toggleActiveStatus'
+export { default as GetCustomerRecommendations } from './customer/getCustomerRecommendations/getCustomerRecommendations'
 
 export { default as CreateSale } from './sale/createSale/CreateSaleUseCase'
 export { default as ListSales } from './sale/listSales/listSales'
