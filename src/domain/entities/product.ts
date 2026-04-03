@@ -10,5 +10,6 @@ export default interface Product extends Entity {
   quantity: Quantity;
   minimumQuantity: Quantity;
   active: boolean;
+  category: string
 }
 
