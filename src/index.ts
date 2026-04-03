@@ -39,6 +39,8 @@ export type {
 
 import { ListCustomerFilters } from './application/interfaces/services/customerService'
 export { type ListCustomerFilters }
+import { ListProductFilters } from './application/interfaces/services/productService'
+export { type ListProductFilters }
 
 import { ListSaleFilters } from './application/interfaces/services/saleService'
 export { type ListSaleFilters }
