@@ -11,5 +11,6 @@ export default interface Product extends Entity {
   minimumQuantity: Quantity;
   active: boolean;
   category: string
+  nivelEstoque: number;
 }
 
