@@ -8,4 +8,9 @@ export default interface ProductService extends CrudService<Product> {
   Deactivate(productId: string): Promise<Result>
   AddStock(productId: string, quantity: Quantity): Promise<Result<Product>>
   RemoveStock(productId: string, quantity: Quantity): Promise<Result<Product>>
+  ListProducts(filters: ListProductFilters): Promise<Result<Product[]>>
+}
+
+export interface ListProductFilters {
+  onlyActives?: boolean
 }
