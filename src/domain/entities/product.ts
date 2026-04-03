@@ -12,5 +12,6 @@ export default interface Product extends Entity {
   active: boolean;
   category: string
   nivelEstoque: number;
+  registrationDate: Date;
 }
 
