@@ -36,11 +36,11 @@
 
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "@Dibimo:registry": "https://npm.pkg.github.com"
+    "@LuanaMaistro:registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dibimo/sistema-vendas-core-lib-frontend.git"
+    "url": "git+https://github.com/LuanaMaistro/sistema-vendas-core-lib-frontend.git"
   },
 
   "keywords": [
