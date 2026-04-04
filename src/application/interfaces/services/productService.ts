@@ -13,4 +13,6 @@ export default interface ProductService extends CrudService<Product> {
 
 export interface ListProductFilters {
   onlyActives?: boolean
+  nome?: string
+  categoria?: string
 }
