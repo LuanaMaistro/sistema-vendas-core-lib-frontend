@@ -1,3 +1,5 @@
 export default interface ListProductsCommand {
-  // Empty for now - future pagination/filtering can be added here
+  onlyActives?: boolean
+  nome?: string
+  categoria?: string
 }
