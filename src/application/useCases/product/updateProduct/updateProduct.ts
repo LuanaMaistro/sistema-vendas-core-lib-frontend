@@ -30,6 +30,7 @@ export default class UpdateProductUseCase extends UseCase {
 
     if (command.name) result.name = command.name;
     if (command.description) result.description = command.description;
+    if (command.category) result.category = command.category;
 
     if (Price.isValid(command.price!))
       result.price = Price.create(command.price!);

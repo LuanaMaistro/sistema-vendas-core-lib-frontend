@@ -33,6 +33,7 @@ export default class AddProductUseCase extends UseCase {
       name: command.name,
       description: command.description,
       code: command.code,
+      category: command.category,
       price: Price.create(command.price),
       quantity: Quantity.create(command.quantity),
       minimumQuantity: Quantity.create(command.minimumQuantity),
