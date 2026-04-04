@@ -3,5 +3,6 @@ export default interface UpdateProductCommand {
   name?: string;
   description?: string;
   price?: number | string;
+  category?: string;
   minimumQuantity?: number | string;
 }

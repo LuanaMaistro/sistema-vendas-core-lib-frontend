@@ -4,5 +4,6 @@ export default interface AddProductCommand {
   code: string;
   price: number | string;
   quantity: number | string;
+  category?: string;
   minimumQuantity: number | string;
 }
