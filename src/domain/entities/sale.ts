@@ -2,6 +2,7 @@ import Entity from "./entity";
 
 export interface Sale extends Entity {
   customerId: string;
+  number?: number;
   date?: Date;
   items: SaleItem[];
   totalAmount?: number;
